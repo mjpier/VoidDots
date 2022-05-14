@@ -1,0 +1,17 @@
+$ sudo xbps-install -S gvfs elogind
+$ sudo ln -srf /etc/sv/{dbus,polkitd,elogind} /var/service
+
+
+$ sudo xbps-install -S pipewire pamixer
+$ sudo ln -srf /etc/sv/{pipewire,pipewire-pulse} /var/service
+$ sudo usermod -aG _pipewire $USER
+
+
+COMO PARCHEAR SUCKLESS
+patch -p1 < parche.diff
+
+
+make && doas make install
+
+https://youtu.be/NwS28dX7eOI
+

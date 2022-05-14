@@ -1,0 +1,33 @@
+ Soporte a teclas de volumen *
+sin-tc3adtulo-1Por lo general, las teclas de control de brillo se configuran automáticamente por lo que no necesitamos añadir soporte (para los equipos que no funcionen las teclas de brillo al final de la guía hay un paso temporal), en cambio en las teclas de volumen si tenemos que hacerlo. Para esto instalamos las herramientas Xbindkeys y Pamixer .
+
+Pasamos a instalar Xbindkeys.
+
+$ sudo pacman -S xbindkeys
+Pamixer se encuentra disponible en AUR, para instalarlo necesitamos de yaourt.
+
+$ yaourt -S pamixer-git
+Creamos el archivo de configuración
+
+$ nano ~/.xbindkeysrc
+Dentro del archivo añadimos:
+
+# subir volumen
+"pamixer --increase 3"
+   XF86AudioRaiseVolume
+# bajar volumen
+"pamixer --decrease 3"
+   XF86AudioLowerVolume
+Guardamos cambios y salimos de nano.
+
+Por ultimo, añadimos Xbindkeys a nuestra lista de programas de inicio (.xinitrc).
+
+Generamos nuestro archivo .xinitrc:
+
+$ cp /etc/skel/.xinitrc ~
+Abrimos:
+
+$ nano .xinitrc
+Dentro de nuestro archivo, añadimos al final:
+
+xbindkeys
